@@ -16,5 +16,4 @@
 #user	0m0.083s
 #sys	0m0.008s
 
-# From the above output we can conclude that async operation takes less time as compare to the sync operation. Here as the file size is small there is lot of overhead for io operatins
-# when using asyncio. That is why to simulate large file operation  wait time is added.
+# From the above output we can conclude that async operation takes less time as compare to the sync operation. Here as the file size is small there is lot of overhead for io operations when using asyncio. That is why to simulate large file operation  wait time is added.

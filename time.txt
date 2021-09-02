@@ -1,0 +1,6 @@
+Sorting.....
+Total execution time is 0.013390779495239258
+
+real	0m0.300s
+user	0m0.479s
+sys	0m0.139s

@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+message dbRequest {
+    string query = 1;
+
+}
+
+message dbResponse{
+    string responsemsg = 1;
+}
+
+service dbReplicator{
+    rpc replicate(dbRequest) returns (dbResponse) {}
+}

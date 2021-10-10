@@ -1,0 +1,24 @@
+$ curl -H 'Content-Type: application/json' -X POST -d '{"long_url": "thisisverylongurl.com", "domain":"myurlshortner"}' localhost:5000/shorten
+{"created_at": "Sun, 10 Oct 2021 02:36:28 GMT", "domain": "myurlshortner", "group_guid":
+ "qwerty", "id": 49, "long_url": "thisisverylongurl.com", "noOfClicks": 9, "short_link":
+ "myurlshortner/CdwO", "title": "Bitly API"}
+
+$ curl -H 'Content-Type: application/json' -X POST 
+-d '{"long_url":"www.googleasdfghjkl.com","title": "bitly APIs","domain": "mydomain"}' localhost:5000/create_bitlinks
+{"created_at": "Sun, 10 Oct 2021 02:41:56 GMT", "domain": "mydomain", "group_guid": "qwerty",
+ "id": 31, "long_url": "www.googleasdfghjkl.com", "no_of_clicks": 60, 
+"short_link": "mydomain/ApKq", "title": "bitly APIs"}
+
+$ curl -H 'Content-Type: application/json' -X PATCH 
+-d '{"long_url":"verylongurl.com","title": "bitly APIs","id":"abcd"}' localhost:5000/update_shortlink/bit.ly/jMbU
+{"created_at":"Wed, 06 Oct 2021 23:14:26 GMT","domain":"bit.ly",
+"group_guid":"bsadjkbjdns","id":"abcd","long_url":"verylongurl.com",
+"no_of_clicks":75,"short_link":"bit.ly/jMbU","title":"bitly APIs"}
+
+$ curl -X GET localhost:5000/retrieve_shortlink/bit.ly/jMbU
+{"created_at": "Wed, 06 Oct 2021 23:14:26 GMT", "domain": "bit.ly", "group_guid": "bsadjkbjdns", "id": "abcd", "long_url": 
+"verylongurl.com", "no_of_clicks": 75, "short_link": "bit.ly/jMbU", "title": "bitly APIs"}
+
+$ curl -X GET localhost:5000/getClicks/bit.ly/jMbU/clicks?unit=month&units=5
+{"link_clicks": [{"clicks": 75, "date": "Sun, 10 Oct 2021 02:49:33 GMT"}], "unit": "month", "unit_reference": "Sun, 10 Oct 
+2021 02:49:33 GMT", "units": 5

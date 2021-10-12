@@ -13,7 +13,7 @@ links.append({
     "group_guid" : "bsadjkbjdns",
     "title" : "Bitly API",
     "short_link":"bit.ly/jMbU",
-    "no_of_clicks": randint(1,100),
+    "no_of_clicks": 0,
     "created_at": "Wed, 06 Oct 2021 23:14:26 GMT",
     "id": 48,
 })
@@ -112,11 +112,20 @@ def getClicks(domain,short_link):
             }
             return json.dumps(res)
     return page_not_found()
-        
+
+
+@bitly.route('/<domain>/<short_link>')
+def redirect_to_link(domain,short_link):
+    
+    for link in links:
+        if link['short_link']==domain+'/'+short_link:
+            link['no_of_clicks']+=1
+            return link['long_url']
+    return page_not_found()      
 
 @bitly.route('/')
 def index():
-    return "<p>Bitly APIs</p>"
+    return render_template('index.html', links=links)
 
 
 @bitly.errorhandler(404)

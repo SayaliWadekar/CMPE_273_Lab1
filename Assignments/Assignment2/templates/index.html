@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bitly</title>
+
+</head>
+
+<body>
+
+<ul>
+{% for item in links %}
+    <li><a href="http://localhost:5000/{{item.short_link}}">{{item.short_link}}</a></li>
+{% endfor %}
+</ul>
+    
+</body>
+
+</html>

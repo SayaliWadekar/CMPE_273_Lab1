@@ -93,7 +93,7 @@ def get_timeline(user_id):
     
     for follower in followers:
         for user in users:
-            if user['id'] == follower:
+            if user['id'] == int(follower):
                 timeline = sorted(user['tweets'], key=lambda d: d['tweet_id'])
                 timeline = [dict(item, user_id=user_id) for item in timeline]
                 result.append(timeline)

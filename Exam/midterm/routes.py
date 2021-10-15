@@ -81,13 +81,25 @@ def get_tweets(user_id):
 
 @twitter.route('/users/<user_id>/timeline')
 def get_timeline(user_id):
+    result = []
+    followers = []
     for user in users:
         if user['id']== int(user_id):
             timeline = sorted(user['tweets'], key=lambda d: d['tweet_id'])
-            result = [dict(item, user_id=user_id) for item in timeline]
-            return json.dumps(result) 
+            timeline = [dict(item, user_id=user_id) for item in timeline]
+            result.append(timeline)
+            followers = user["followers"]
+            break
     
-    return page_not_found()
+    for follower in followers:
+        for user in users:
+            if user['id'] == follower:
+                timeline = sorted(user['tweets'], key=lambda d: d['tweet_id'])
+                timeline = [dict(item, user_id=user_id) for item in timeline]
+                result.append(timeline)
+            
+    
+    return json.dumps(result)
 
 
 
